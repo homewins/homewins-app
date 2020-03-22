@@ -15,6 +15,7 @@ class _HomeWinsAppState extends State<HomeWinsApp> {
   String _homeLocation;
   String _homeWifiSsid;
   bool _isInitializing = true;
+  int _points = 0;
 
   Future<Null> authenticate() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -83,7 +84,7 @@ class _HomeWinsAppState extends State<HomeWinsApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme,
-      home: _accessToken == null ? LoginPage(onLoggedIn: this.onLoggedIn) : HomePage(onLogout: onLogout, accessToken: _accessToken, homeLocation: _homeLocation, homeWifiSsid: _homeWifiSsid)
+      home: _accessToken == null ? LoginPage(onLoggedIn: this.onLoggedIn) : HomePage(onLogout: onLogout, points: _points, accessToken: _accessToken, homeLocation: _homeLocation, homeWifiSsid: _homeWifiSsid)
     );
   }
 }

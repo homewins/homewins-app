@@ -6,9 +6,10 @@ class HomePage extends StatefulWidget {
   final String accessToken;
   final String homeLocation;
   final String homeWifiSsid;
+  final int points;
   final Function onLogout;
 
-  HomePage({Key key, @required this.accessToken, @required this.homeLocation, @required this.homeWifiSsid, @required this.onLogout}) : super(key: key);
+  HomePage({Key key, @required this.points, @required this.accessToken, @required this.homeLocation, @required this.homeWifiSsid, @required this.onLogout}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _HomePageState();
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     var names = [
       "Tim",
       "Vinh",
-      "Max"
+      "Max",
       "Simon",
       "Maria",
       "Adib",
@@ -67,112 +68,114 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text("HomeWins"),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 10).add(EdgeInsets.symmetric(horizontal: 10)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Card(
-                elevation: 2,
-                child: Column(
-                  children: <Widget>[
-                    Container(height: 20),
-                    Center(
-                      child: Text(
-                        "23 Punkte",
-                        style: Theme.of(context).textTheme.headline.apply(fontWeightDelta: 5, fontSizeDelta: 17),
-                      ),
-                    ),
-                    Container(height: 10),
-                    Center(
-                      child: Text(
-                        "Du bist Zuhause! Weiter so!",
-                        style: Theme.of(context).textTheme.headline.apply(fontWeightDelta: 2, color: Colors.green, fontSizeDelta: -5),
-                      ),
-                    ),
-                    Container(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10).add(EdgeInsets.symmetric(horizontal: 10)),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Card(
+                    elevation: 2,
+                    child: Column(
                       children: <Widget>[
-                        FlatButton(
-                          child: Text("Logout"),
-                          onPressed: () {
-                            widget.onLogout();
-                          },
+                        Container(height: 20),
+                        Center(
+                          child: Text(
+                            widget.points.toString() + " Punkte",
+                            style: Theme.of(context).textTheme.headline.apply(fontWeightDelta: 5, fontSizeDelta: 17),
+                          ),
                         ),
-                        FlatButton(
-                          child: Text("Fortschritt Teilen"),
-                          onPressed: () {
-                            widget.onLogout();
-                          },
+                        Container(height: 10),
+                        Center(
+                          child: Text(
+                            "Du bist Zuhause! Weiter so!",
+                            style: Theme.of(context).textTheme.headline.apply(fontWeightDelta: 2, color: Colors.green, fontSizeDelta: -5),
+                          ),
+                        ),
+                        Container(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            FlatButton(
+                              child: Text("Logout"),
+                              onPressed: () {
+                                widget.onLogout();
+                              },
+                            ),
+                            FlatButton(
+                              child: Text("Fortschritt Teilen"),
+                              onPressed: () {
+                                widget.onLogout();
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              Container(height: 25),
-              Center(
-                child: Text(
-                  "Leaderboards",
-                  style: Theme.of(context).textTheme.headline.apply(fontWeightDelta: 2),
-                ),
-              ),
-              Center(
-                child: Text(
-                  "26-22 März",
-                  style: Theme.of(context).textTheme.subhead,
-                ),
-              ),
-              Container(height: 16),
-              ...leaderboard,
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: RaisedButton(
-                      color: Theme.of(context).primaryColor,
-                      padding: EdgeInsets.all(2),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(Icons.chevron_left),
-                          Text(
-                              "Zurück",
-                              style: TextStyle(
-                                  color: Colors.white
-                              )
-                          )
-                        ],
-                      ),
+                  ),
+                  Container(height: 25),
+                  Center(
+                    child: Text(
+                      "Leaderboards",
+                      style: Theme.of(context).textTheme.headline.apply(fontWeightDelta: 2),
                     ),
                   ),
-                  Container(width: 5),
-                  Expanded(
-                    child: RaisedButton(
-                      color: Theme.of(context).primaryColor,
-                      padding: EdgeInsets.all(2),
-                      onPressed: () async {
-                        // TODO: YO
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                              "Weiter",
-                              style: TextStyle(
-                                  color: Colors.white
-                              )
-                          ),
-                          Icon(Icons.chevron_right),
-                        ],
-                      ),
+                  Center(
+                    child: Text(
+                      "26-22 März",
+                      style: Theme.of(context).textTheme.subhead,
                     ),
+                  ),
+                  Container(height: 16),
+                  ...leaderboard,
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: RaisedButton(
+                          color: Theme.of(context).primaryColor,
+                          padding: EdgeInsets.all(2),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(Icons.chevron_left),
+                              Text(
+                                  "Zurück",
+                                  style: TextStyle(
+                                      color: Colors.white
+                                  )
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(width: 5),
+                      Expanded(
+                        child: RaisedButton(
+                          color: Theme.of(context).primaryColor,
+                          padding: EdgeInsets.all(2),
+                          onPressed: () async {
+                            // TODO: YO
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                  "Weiter",
+                                  style: TextStyle(
+                                      color: Colors.white
+                                  )
+                              ),
+                              Icon(Icons.chevron_right),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
                   )
-                ],
-              )
-            ]
+                ]
+            ),
           ),
         )
     );
