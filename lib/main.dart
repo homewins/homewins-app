@@ -77,7 +77,7 @@ class _HomeWinsAppState extends State<HomeWinsApp> {
     }
 
     var theme = ThemeData(
-        primaryColor: Colors.deepOrange[900],
+      primaryColor: Colors.deepOrange[900],
     );
 
     return MaterialApp(
