@@ -170,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             RaisedButton(
-              color: Theme.of(context).buttonTheme.colorScheme.primary,
+              color: Theme.of(context).primaryColor,
               padding: EdgeInsets.all(15),
               onPressed: () async {
                 if (_isCreatingAccount) return;
@@ -306,7 +306,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             RaisedButton(
-              color: Theme.of(context).buttonTheme.colorScheme.primary,
+              color: Theme.of(context).primaryColor,
               padding: EdgeInsets.all(15),
               onPressed: () async {
                 if (_isLoggingIn) return;
@@ -465,7 +465,7 @@ class _LoginPageState extends State<LoginPage> {
             RaisedButton(
               elevation: 3,
               padding: EdgeInsets.all(15),
-              color: Theme.of(context).buttonTheme.colorScheme.primary,
+              color: Theme.of(context).primaryColor,
               onPressed: () async {
                 if (!_isLocationCorrect || !_isWifiCorrect) {
                   showDialog(
@@ -626,7 +626,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 30,
                         ),
                         RaisedButton(
-                          color: Theme.of(context).buttonTheme.colorScheme.primary,
+                          color: Theme.of(context).primaryColor,
                           padding: EdgeInsets.all(15),
                           onPressed: () async {
                             _usernameController.text = "";
